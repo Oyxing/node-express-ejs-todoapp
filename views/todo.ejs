@@ -108,7 +108,14 @@
             console.log(item)
             // 将数据传递到服务器中
             $.ajax({
-                type:"UPDATE",
+                type:"DELETE",
+                url:'/todo/' + item,
+                success:function (data) {
+                    // 刷新当前页面
+                }
+            })
+            $.ajax({
+                type:"POST",
                 url:'/todo',
                 data:todo,
                 success:function (data) {
