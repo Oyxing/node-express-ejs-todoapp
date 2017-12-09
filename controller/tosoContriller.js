@@ -6,7 +6,8 @@ var mongoose = require('mongoose')
 mongoose.connect('mongodb://todoapp:todoapp@ds133776.mlab.com:33776/oyxingsql')
 // 创建图表
 var todoSchema = new mongoose.Schema({
-    item:String
+    item:String,
+    read:Boolean 
 })
 //往数据库存储数据
 
@@ -26,7 +27,6 @@ module.exports = function(app){
     app.get('/todo',function(req,res){
         Todo.find({},function(err,data){
             if (err) throw err
-
             res.render('todo',{todos:data})
         })
     })
@@ -53,4 +53,13 @@ module.exports = function(app){
             // });
             // res.json(data)
     })
+    // //删除数据
+    // app.update('/todo',function(req,res){
+    //     Todo(req.body).update(function(err,data){
+    //             if (err) throw err;
+
+    //             res.json(data)
+    //         })   
+           
+    // })
 }

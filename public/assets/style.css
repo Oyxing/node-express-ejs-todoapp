@@ -168,7 +168,11 @@ ul.todo li .buttons button.complete svg{
     border: 1.5px solid #25b99a;
     transition: background 0.2s ease;
 }
-
+ul.todo li .buttons button.completed svg{
+    border-radius: 11px;
+    background:#25b99a;
+   
+}
 /* 设置remove的颜色 */
 ul.todo li .buttons button.remove svg .fill{
     fill: #c0cecb;
@@ -188,7 +192,9 @@ ul.todo li .buttons button svg .fill{
 ul.todo li .buttons button.complete svg .fill{
     fill: #25b99a;
 }
-
+ul.todo li .buttons button.completed svg .fill{
+    fill: #fff;
+}
 /* 如果当前元素不是#completed,那么让对号变成白色 */
 ul.todo:not(#completed) li .buttons button.complete:hover svg .fill{
     fill: #fff;
