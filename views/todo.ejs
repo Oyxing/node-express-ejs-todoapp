@@ -39,7 +39,6 @@
                     </div>
                 </li>
                 <% } %>
-                
             <%})%>
         </ul>
         <!-- 已完成的列表 -->
@@ -70,13 +69,11 @@
             // 获取input中的值
             var item = $('form input');
             var todo = {item:item.val(),read:false};
-
             // 判断内容是否为空
             if (todo.item == ''){
                 alert('内容不能为空,请重新输入!');
                 return;
             }
-
             // 发送数据请求
             $.ajax({
                 type:'POST',
@@ -101,23 +98,15 @@
                 }
             })
         });
+
         // 已阅读
         $('.complete').on('click',function () {
             var item = $.trim($(this).parent().parent().text());
             var todo = {item:item,read:true};
-            console.log(item)
             // 将数据传递到服务器中
             $.ajax({
-                type:"DELETE",
-                url:'/todo/' + item,
-                success:function (data) {
-                    // 刷新当前页面
-                }
-            })
-            $.ajax({
-                type:"POST",
-                url:'/todo',
-                data:todo,
+                type:"PUT",
+                url:'/todo/'+ item,
                 success:function (data) {
                     // 刷新当前页面
                     location.reload();
