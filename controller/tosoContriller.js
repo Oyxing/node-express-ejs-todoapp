@@ -53,13 +53,13 @@ module.exports = function(app){
             // });
             // res.json(data)
     })
-    // //删除数据
-    // app.update('/todo',function(req,res){
-    //     Todo(req.body).update(function(err,data){
-    //             if (err) throw err;
+    // 更新数据
+    app.put('/todo/:item',function(req,res){
+        Todo.find({item:req.params.item}).update({item:req.params.item,read:true},function(err,data){
+                if (err) throw err;
 
-    //             res.json(data)
-    //         })   
+                res.json(data)
+            })   
            
-    // })
+    })
 }
